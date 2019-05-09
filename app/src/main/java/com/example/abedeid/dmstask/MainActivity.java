@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity  {
         final SwipeRefreshLayout swipeRefreshLayout= (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
+            
             public void onRefresh() {
                 doYourUpdate();
             }
