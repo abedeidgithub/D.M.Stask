@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.abedeid.dmstask.Adapters.RepoAdapter;
 import com.example.abedeid.dmstask.EndLess.EndlessRecyclerViewScrollListener;
 import com.example.abedeid.dmstask.Services.WebService;
+import com.example.abedeid.dmstask.URL.URL;
 import com.example.abedeid.dmstask.obj.Repo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,6 +22,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity  {
         final SwipeRefreshLayout swipeRefreshLayout= (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            
+
             public void onRefresh() {
                 doYourUpdate();
             }
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
     private void getRepoOfPage(int page_num){
+
         WebService.getInstance().getApi().get_repo_data("Square",page_num+"","10").enqueue(new Callback<ArrayList<Repo>>() {
             @Override
             public void onResponse(Call<ArrayList<Repo>> call, Response<ArrayList<Repo>> response) {
@@ -108,6 +111,7 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<ArrayList<Repo>> call, Throwable t) {
+                Log.e("aqaaa",t.getMessage());
                 RepoList.addAll( loaddataLocal());
                 adapter = new RepoAdapter(RepoList, MainActivity.this);
                 recyclerView.setAdapter(adapter);

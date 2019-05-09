@@ -16,4 +16,6 @@ import retrofit2.http.Query;
 public interface API {
     @GET("{user}/repos")
     Call<ArrayList<Repo>>get_repo_data(@Path("user") String user, @Query("page") String page, @Query("per_page") String per_page);
+//    @GET("student.php")
+//    Call<ArrayList<Repo>>get_repo_data();
 }
