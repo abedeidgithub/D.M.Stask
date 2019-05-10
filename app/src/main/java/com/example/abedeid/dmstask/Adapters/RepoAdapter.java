@@ -55,7 +55,7 @@ public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 public void onBindViewHolder(final MyViewHolder holder, int position) {
     int type = getItemViewType(position);
        Repo CurrentPost = RepoList.get(position);
-        holder.name.setText(position+"  " +CurrentPost.getFullName());
+        holder.name.setText(CurrentPost.getFullName());
         holder.des.setText(CurrentPost.getDescription());
         holder.username.setText(CurrentPost.getOwner().getLogin());
         holder.Rep_url=CurrentPost.getHtmlUrl();
